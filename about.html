@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About · Hearth & Ember</title>
+  <!-- Google Fonts: DM Serif Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- Canyon Hearth Cottage design system (same as homepage) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fbf7f0;
+      color: #2d2a24;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      color: #3e3527;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin: 2.2rem 0 1.2rem;
+      border-bottom: 3px double #dac5b0;
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 1.8rem 0 0.8rem;
+      color: #5b4a36;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      color: #3d352b;
+    }
+
+    a {
+      color: #8b6f4c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    a:hover { color: #4d3a26; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: #fffcf7;
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 12px 28px -8px rgba(60, 45, 30, 0.08);
+      transition: all 0.2s;
+      border: 1px solid #eee6db;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 40px -12px rgba(60, 45, 30, 0.18);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e6d7c4;
+      color: #3e3224;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 0.8rem;
+      border-bottom: 1px solid #e4d8ca;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      font-weight: 400;
+      color: #2f2a1f;
+      letter-spacing: -0.02em;
+    }
+    .logo i {
+      color: #b38b6b;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .nav-links a { color: #3f372c; }
+    .nav-links a:hover { color: #8b6f4c; }
+
+    .hero {
+      background: #f0e7db;
+      padding: 3rem 3rem;
+      border-radius: 48px 48px 24px 24px;
+      margin: 1.5rem 0 3rem;
+      background-image: radial-gradient(circle at 20% 30%, rgba(235, 215, 190, 0.3) 0%, transparent 50%);
+    }
+
+    .hero h1 {
+      font-size: 3.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero .sub {
+      font-size: 1.25rem;
+      color: #4e402f;
+      max-width: 780px;
+      font-weight: 350;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 32px;
+      margin: 0.5rem 0 1.8rem;
+      background: #dacfc2;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    }
+
+    .two-col-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    .about-story {
+      background: #fffaf5;
+      padding: 2rem 2.5rem;
+      border-radius: 40px;
+      border-left: 8px solid #dac5b0;
+    }
+
+    .team-card {
+      background: #f5ede4;
+      padding: 1.5rem;
+      border-radius: 32px;
+      margin-bottom: 1.5rem;
+    }
+
+    .tip-block {
+      background: #efe6db;
+      padding: 1.2rem 2rem;
+      border-radius: 40px 12px 40px 12px;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    .newsletter {
+      background: #e5d7c6;
+      padding: 2.8rem 2.5rem;
+      border-radius: 48px;
+      text-align: center;
+      margin: 3.5rem 0;
+    }
+    .newsletter input {
+      padding: 0.9rem 1.8rem;
+      border-radius: 60px;
+      border: none;
+      width: 280px;
+      max-width: 100%;
+      font-size: 1rem;
+      background: white;
+      margin-right: 0.5rem;
+    }
+    .newsletter button {
+      background: #2f2a1f;
+      border: none;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .newsletter button:hover { background: #4d3a26; }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 2px solid #e1d2c0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: #4d402f;
+    }
+
+    @media (max-width: 800px) {
+      h1 { font-size: 2.8rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .two-col-layout { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; align-items: start; gap: 0.8rem; }
+      .nav-links { flex-wrap: wrap; gap: 1.2rem; }
+    }
+    @media (max-width: 550px) {
+      body { padding: 0 0.8rem; }
+      .hero h1 { font-size: 2.4rem; }
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-item {
+      background: #fffcf7;
+      padding: 1.2rem;
+      border-radius: 40px;
+      text-align: center;
+      border: 1px solid #e6dbcf;
+    }
+    .stat-item .number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: #3e3527;
+    }
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER (identical to homepage) -->
+  <header class="site-header">
+    <div class="logo"><i class="fas fa-fire"></i> Canyon Hearth Cottager</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" style="color:#8b6f4c; font-weight:600;">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookies Policy</a>
+    </div>
+  </header>
+
+  <!-- HERO / ABOUT INTRO (1 image) -->
+  <section class="hero">
+    <h1>Our story</h1>
+    <p class="sub">Hearth & Ember was born from a love of slow cooking, honest ingredients, and the quiet wisdom passed down through generations. We are cooks, writers, and gardeners who believe that the best meals tell a story.</p>
+    <!-- hero image (about) 1/4 -->
+    <img class="hero-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='280' viewBox='0 0 800 280'%3E%3Crect width='800' height='280' fill='%23dacfc2'/%3E%3Ctext x='40' y='150' font-family='Inter, sans-serif' font-size='28' fill='%233e3527' font-weight='300'%3E%3Ctspan x='40' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" alt="Hearth & Ember – about us" />
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 0.8rem;">
+      <span><i class="fas fa-seedling" style="margin-right: 8px;"></i> Founded 2024</span>
+      <span><i class="fas fa-hand-holding-heart"></i> 100% ad-free</span>
+      <span><i class="fas fa-mug-saucer"></i> 12k+ happy readers</span>
+    </div>
+  </section>
+
+  <!-- STORY + VALUES (two-col) -->
+  <div class="two-col-layout">
+    <div>
+      <div class="about-story">
+        <h2 style="border: none; margin-top: 0;">The hearth philosophy</h2>
+        <p><strong>We don’t follow trends — we follow the seasons.</strong> Every recipe on Hearth & Ember is tested at least a dozen times in our own kitchens. We prioritise flavour, nutrition, and the joy of cooking over spectacle.</p>
+        <p>Our team of four (plus a rotating cast of guest contributors) brings together pastry chefs, fermentation nerds, and foragers. We share what we’ve learned from cookbooks, grandmothers, and happy accidents.</p>
+        <div class="tip-block"><i class="fas fa-quote-left" style="margin-right: 10px;"></i> “Cooking is not about perfection — it’s about presence. We want you to feel that warmth.”</div>
+      </div>
+    </div>
+    <div>
+      <h2>Our values</h2>
+      <div class="card"><i class="fas fa-leaf" style="color: #8b6f4c; margin-right: 8px;"></i> <strong>Seasonal & whole-food</strong> — we cook with what nature provides.</div>
+      <div class="card"><i class="fas fa-mortar-pestle"></i> <strong>Technique first</strong> — master the basics, then improvise.</div>
+      <div class="card"><i class="fas fa-hand-sparkles"></i> <strong>No waste</strong> — from root to stem, we use everything.</div>
+    </div>
+  </div>
+
+  <!-- MEET THE TEAM (with 2 image placeholders) -->
+  <h2>Meet the hearth keepers</h2>
+  <div class="card-grid">
+    <div class="card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160' viewBox='0 0 300 160'%3E%3Crect width='300' height='160' fill='%23dacfc2'/%3E%3Ctext x='30' y='95' font-family='Inter, sans-serif' font-size='18' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" style="width:100%; height:140px; object-fit:cover; border-radius:24px; background:#dacfc2; margin-bottom:1rem;" alt="Clara" />
+      <h3>Clara Wade</h3>
+      <p><span class="badge">Editor & baker</span></p>
+      <p>Clara is a sourdoholic and former pastry chef. She believes that bread is the ultimate act of patience.</p>
+    </div>
+    <div class="card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160' viewBox='0 0 300 160'%3E%3Crect width='300' height='160' fill='%23dacfc2'/%3E%3Ctext x='30' y='95' font-family='Inter, sans-serif' font-size='18' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" style="width:100%; height:140px; object-fit:cover; border-radius:24px; background:#dacfc2; margin-bottom:1rem;" alt="Marcus" />
+      <h3>Marcus Bell</h3>
+      <p><span class="badge">Savoury specialist</span></p>
+      <p>Marcus spent years in restaurant kitchens. He now teaches home cooks how to nail sears, braises, and emulsions.</p>
+    </div>
+    <div class="card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160' viewBox='0 0 300 160'%3E%3Crect width='300' height='160' fill='%23dacfc2'/%3E%3Ctext x='30' y='95' font-family='Inter, sans-serif' font-size='18' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" style="width:100%; height:140px; object-fit:cover; border-radius:24px; background:#dacfc2; margin-bottom:1rem;" alt="Elena" />
+      <h3>Elena Rossi</h3>
+      <p><span class="badge">Fermentation & preserving</span></p>
+      <p>Elena is a microbiologist turned pickler. She makes kimchi, kombucha, and kraut with scientific precision.</p>
+    </div>
+  </div>
+
+  <!-- STATS + MILESTONES (visual) -->
+  <div style="margin: 3rem 0;">
+    <h2>By the numbers</h2>
+    <div class="stat-grid">
+      <div class="stat-item"><span class="number">200+</span><br>recipes tested</div>
+      <div class="stat-item"><span class="number">4</span><br>core team members</div>
+      <div class="stat-item"><span class="number">12k</span><br>monthly readers</div>
+    </div>
+  </div>
+
+  <!-- INSPIRATION + EXTERNAL LINKS (remaining images) -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+    <div>
+      <h2>Our kitchen inspirations</h2>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='160' viewBox='0 0 500 160'%3E%3Crect width='500' height='160' fill='%23dacfc2'/%3E%3Ctext x='30' y='95' font-family='Inter, sans-serif' font-size='20' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" style="width:100%; height:140px; object-fit:cover; border-radius:32px; background:#dacfc2; margin-bottom:1rem;" alt="inspiration" />
+      <p>We draw from French country cooking, Italian <em>cucina povera</em>, and the vibrant spice markets of the Levant. Our library is filled with worn-out copies of Julia Child, Marcella Hazan, and Claudia Roden.</p>
+    </div>
+    <div>
+      <h2>What we stand for</h2>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='160' viewBox='0 0 500 160'%3E%3Crect width='500' height='160' fill='%23dacfc2'/%3E%3Ctext x='30' y='95' font-family='Inter, sans-serif' font-size='20' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" style="width:100%; height:140px; object-fit:cover; border-radius:32px; background:#dacfc2; margin-bottom:1rem;" alt="values" />
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="padding:0.4rem 0;">🔥  Real food, real techniques</li>
+        <li style="padding:0.4rem 0;">🌿  Seasonal & sustainable</li>
+        <li style="padding:0.4rem 0;">📖  No ads, no sponsored content</li>
+        <li style="padding:0.4rem 0;">❤️  Community over clicks</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER (same as homepage) -->
+  <div class="newsletter">
+    <h2 style="border: none; margin-top: 0;">Join the hearth</h2>
+    <p style="max-width: 500px; margin: 0 auto 1.8rem;">Weekly letters with recipes, techniques, and kitchen philosophy. No spam — just fire and flour.</p>
+    <input type="email" placeholder="your email" /> <button>Subscribe</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Hearth & Ember · crafted with intention</div>
+    <div style="display: flex; gap: 1.8rem;">
+      <a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="#">Cookbook</a>
+    </div>
+  </footer>
+
+</div>
+<!-- end container -->
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hearth & Ember · Artisan Recipes & Kitchen Wisdom</title>
+  <!-- Google Fonts: unique pairing for premium authority feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for icons (minimal, crisp) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- UNIQUE DESIGN SYSTEM : Canyon Hearth Cottage ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fbf7f0;  /* warm parchment */
+      color: #2d2a24;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      color: #3e3527;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin: 2.2rem 0 1.2rem;
+      border-bottom: 3px double #dac5b0;
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 1.8rem 0 0.8rem;
+      color: #5b4a36;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      color: #3d352b;
+    }
+
+    a {
+      color: #8b6f4c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    a:hover { color: #4d3a26; }
+
+    /* unique card & spacing */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: #fffcf7;
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 12px 28px -8px rgba(60, 45, 30, 0.08);
+      transition: all 0.2s;
+      border: 1px solid #eee6db;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 40px -12px rgba(60, 45, 30, 0.18);
+    }
+
+    .card h3 {
+      margin-top: 0.2rem;
+      font-size: 1.6rem;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e6d7c4;
+      color: #3e3224;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    /* header / nav */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 0.8rem;
+      border-bottom: 1px solid #e4d8ca;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      font-weight: 400;
+      color: #2f2a1f;
+      letter-spacing: -0.02em;
+    }
+    .logo i {
+      color: #b38b6b;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .nav-links a { color: #3f372c; }
+    .nav-links a:hover { color: #8b6f4c; }
+
+    /* hero */
+    .hero {
+      background: #f0e7db;
+      padding: 3.5rem 3rem;
+      border-radius: 48px 48px 24px 24px;
+      margin: 1.5rem 0 3rem;
+      background-image: radial-gradient(circle at 20% 30%, rgba(235, 215, 190, 0.3) 0%, transparent 50%);
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero .sub {
+      font-size: 1.25rem;
+      color: #4e402f;
+      max-width: 780px;
+      font-weight: 350;
+    }
+
+    .hero-featured {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 3rem;
+      margin-top: 2.2rem;
+      border-top: 1px solid #cfbeaa;
+      padding-top: 2rem;
+    }
+    .hero-featured span {
+      font-weight: 600;
+      color: #3e3324;
+      letter-spacing: 0.02em;
+    }
+
+    /* images – only 4 total */
+    .hero-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 32px;
+      margin: 0.5rem 0 1.8rem;
+      background: #dacfc2;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    }
+
+    .featured-article-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 24px;
+      background: #dacfc2;
+      margin-bottom: 1rem;
+    }
+
+    .category-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 20px;
+      background: #dacfc2;
+      margin-bottom: 1rem;
+    }
+
+    .infographic-img {
+      width: 100%;
+      max-width: 700px;
+      margin: 2rem auto;
+      display: block;
+      border-radius: 32px;
+      background: #dacfc2;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    /* layout: 90% content, 10% visuals */
+    .content-rich {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .two-col-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    /* article previews (blog posts) */
+    .article-excerpt {
+      background: #fffaf5;
+      padding: 1.8rem 2rem;
+      border-radius: 28px;
+      margin-bottom: 2rem;
+      border-left: 6px solid #dac5b0;
+    }
+    .article-excerpt h3 {
+      margin-top: 0.2rem;
+    }
+    .article-meta {
+      font-size: 0.8rem;
+      color: #7a6b59;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0.6rem 0 0.8rem;
+    }
+
+    .faq-item {
+      background: #f5ede4;
+      padding: 1.2rem 1.8rem;
+      border-radius: 30px;
+      margin-bottom: 1rem;
+    }
+    .faq-item strong {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .newsletter {
+      background: #e5d7c6;
+      padding: 2.8rem 2.5rem;
+      border-radius: 48px;
+      text-align: center;
+      margin: 3.5rem 0;
+    }
+    .newsletter input {
+      padding: 0.9rem 1.8rem;
+      border-radius: 60px;
+      border: none;
+      width: 280px;
+      max-width: 100%;
+      font-size: 1rem;
+      background: white;
+      margin-right: 0.5rem;
+    }
+    .newsletter button {
+      background: #2f2a1f;
+      border: none;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .newsletter button:hover { background: #4d3a26; }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 2px solid #e1d2c0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: #4d402f;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      h1 { font-size: 2.8rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .two-col-layout { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; align-items: start; gap: 0.8rem; }
+      .nav-links { flex-wrap: wrap; gap: 1.2rem; }
+    }
+    @media (max-width: 550px) {
+      body { padding: 0 0.8rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.4rem; }
+    }
+
+    /* unique touches: custom blockquote */
+    .tip-block {
+      background: #efe6db;
+      padding: 1.2rem 2rem;
+      border-radius: 40px 12px 40px 12px;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    /* table style for comparisons */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fcf8f2;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    th {
+      background: #dacfc2;
+      color: #2d261d;
+      font-weight: 600;
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+    }
+    td {
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid #e9dfd2;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo"><i class="fas fa-fire"></i> Canyon Hearth Cottager</div>
+    <div class="nav-links">
+    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms Of Privacy</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="cookies.html">Cookies Policy</a></li>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (1) -->
+  <section class="hero">
+    <h1>Cook with intention,<br>eat with reverence.</h1>
+    <p class="sub">Hearth & Ember is a kitchen journal for the curious cook. We explore traditional methods, seasonal ingredients, and the quiet craft of home cooking. <br>No trends — just timeless wisdom.</p>
+    <!-- Hero Image (1/4) -->
+    <img class="hero-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='320' viewBox='0 0 800 320'%3E%3Crect width='800' height='320' fill='%23dacfc2'/%3E%3Ctext x='40' y='170' font-family='Inter, sans-serif' font-size='28' fill='%233e3527' font-weight='300'%3E%3Ctspan x='40' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E"
+         alt="Hearth & Ember – artisan kitchen" />
+    <div class="hero-featured">
+      <span><i class="fas fa-utensils" style="margin-right: 8px;"></i> 200+ heritage recipes</span>
+      <span><i class="fas fa-leaf"></i>  seasonal & whole-food</span>
+      <span><i class="fas fa-book-open"></i>  deep-dive technique guides</span>
+    </div>
+  </section>
+
+  <!-- FEATURED ARTICLES + BEGINNER GUIDES (two-col) -->
+  <div class="two-col-layout">
+    <div>
+      <h2>Featured articles</h2>
+      <!-- Featured Article Image (2/4) -->
+      <img class="featured-article-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='200' viewBox='0 0 600 200'%3E%3Crect width='600' height='200' fill='%23dacfc2'/%3E%3Ctext x='30' y='120' font-family='Inter, sans-serif' font-size='22' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" alt="featured article" />
+      <div class="article-excerpt">
+        <span class="badge">Masterclass</span>
+        <h3><a href="#">The art of slow fermentation: sourdough beyond the basics</a></h3>
+        <div class="article-meta"><span>by Clara Wade</span> <span>· 12 min read</span></div>
+        <p>Explore the microbial dance that gives bread its soul. From starter maintenance to cold proofing, this guide covers the nuances that separate good loaves from transcendent ones.</p>
+      </div>
+      <div class="article-excerpt">
+        <span class="badge">Ingredient deep-dive</span>
+        <h3><a href="#">Salt, fat, acid, heat: a kitchen compass</a></h3>
+        <div class="article-meta"><span>by Marcus Bell</span> <span>· 8 min read</span></div>
+        <p>How to balance the four pillars of cooking. Real-world examples, troubleshooting, and the science behind every seasoning choice.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2>Beginner guides</h2>
+      <div class="card" style="margin-bottom: 1.8rem;">
+        <span class="badge">Start here</span>
+        <h3><a href="#">Knife skills: from clumsy to confident</a></h3>
+        <p>Essential cuts, grip, and maintenance. Build speed and safety with our step-by-step visual method (no gimmicks).</p>
+      </div>
+      <div class="card" style="margin-bottom: 1.8rem;">
+        <span class="badge">Foundational</span>
+        <h3><a href="#">The mother sauces: a modern approach</a></h3>
+        <p>Béchamel, velouté, espagnole, tomato, and hollandaise — simplified for the home cook, with variations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY IMAGE (3/4) + POPULAR CATEGORIES -->
+  <h2>Explore by category</h2>
+  <img class="category-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='140' viewBox='0 0 800 140'%3E%3Crect width='800' height='140' fill='%23dacfc2'/%3E%3Ctext x='30' y='85' font-family='Inter, sans-serif' font-size='28' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" alt="recipe categories" />
+  <div class="card-grid">
+    <div class="card"><span class="badge">Baking</span><h3>Breads & pastries</h3><p>15 articles on laminated dough, sourdough, and quick breads.</p></div>
+    <div class="card"><span class="badge">Seasonal</span><h3>Farm-to-table</h3><p>Preserving, pickling, and cooking with what’s ripe.</p></div>
+    <div class="card"><span class="badge">Techniques</span><h3>Heat & timing</h3><p>Searing, braising, steaming — master the methods.</p></div>
+    <div class="card"><span class="badge">Pantry</span><h3>Spices & staples</h3><p>Build a flavorful pantry with our essential guides.</p></div>
+  </div>
+
+  <!-- TRENDING + LATEST ARTICLES (mixed) -->
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; margin: 3rem 0;">
+    <div>
+      <h2>Trending now</h2>
+      <div class="article-excerpt"><h3><a href="#">One-pot wonders: 8 braises for cold nights</a></h3><p>Hearty, economical, and deeply flavourful. Plus a table of cook times.</p></div>
+      <div class="article-excerpt"><h3><a href="#">The umami pantry: miso, anchovy, and mushroom</a></h3><p>How to layer savoury depth without a recipe.</p></div>
+    </div>
+    <div>
+      <h2>Latest articles</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="border-bottom:1px solid #e6dbcf; padding:0.7rem 0;"><a href="#">·  Grilled stone fruit with burrata</a></li>
+        <li style="border-bottom:1px solid #e6dbcf; padding:0.7rem 0;"><a href="#">·  Whole grain sourdough: a field guide</a></li>
+        <li style="border-bottom:1px solid #e6dbcf; padding:0.7rem 0;"><a href="#">·  Quick pickles for every season</a></li>
+        <li style="padding:0.7rem 0;"><a href="#">·  The science of emulsions</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- IN-DEPTH TUTORIALS + RESOURCE HUB -->
+  <div class="two-col-layout">
+    <div>
+      <h2>In-depth tutorials</h2>
+      <div class="card"><h3><a href="#">Sourdough starter: from scratch to mature</a></h3><p>Day-by-day timeline, troubleshooting, and maintenance schedule. Includes a feeding log template.</p></div>
+      <div class="card"><h3><a href="#">Butchering a whole chicken (and using every part)</a></h3><p>Step-by-step with detailed photos (in text), plus stock and confit.</p></div>
+    </div>
+    <div>
+      <h2>Resource hub</h2>
+      <div class="card"><i class="fas fa-book"></i> <strong>Flavour matrix</strong> – 40 ingredient pairings</div>
+      <div class="card"><i class="fas fa-clock"></i> <strong>Time & temp guide</strong> – roasting, baking, sous-vide</div>
+      <div class="card"><i class="fas fa-calculator"></i> <strong>Baker’s percentages</strong> – hydration & scaling</div>
+    </div>
+  </div>
+
+  <!-- INFOGRAPHIC IMAGE (4/4) – optional infographic -->
+  <img class="infographic-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='220' viewBox='0 0 700 220'%3E%3Crect width='700' height='220' fill='%23dacfc2'/%3E%3Ctext x='30' y='120' font-family='Inter, sans-serif' font-size='28' fill='%233e3527'%3E%3Ctspan x='30' dy='0'%3E%3C/tspan%3E%3C/text%3E%3C/svg%3E" alt="infographic: cooking temperatures" />
+
+  <!-- COMPARISON TABLE + BEST PRACTICES -->
+  <div style="margin: 2.8rem 0;">
+    <h2>Comparison: cooking fats</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Fat</th><th>Smoke point</th><th>Best use</th><th>Flavour</th></tr>
+        <tr><td>Ghee</td><td>485°F</td><td>Searing, frying</td><td>Nutty, rich</td></tr>
+        <tr><td>Olive oil (EV)</td><td>375°F</td><td>Sauté, dressing</td><td>Peppery, fruity</td></tr>
+        <tr><td>Avocado oil</td><td>520°F</td><td>High-heat roasting</td><td>Neutral</td></tr>
+        <tr><td>Butter</td><td>350°F</td><td>Baking, finishing</td><td>Creamy, sweet</td></tr>
+      </table>
+    </div>
+    <div class="tip-block"><strong>Best practice:</strong> match fat to temperature; reserve delicate oils for finishing.</div>
+  </div>
+
+  <!-- FAQ SECTION (schema-ready) -->
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><strong>How do I adjust a recipe for high altitude?</strong> <p>Reduce leavening by 20%, increase liquid slightly, and extend baking time. We have a full guide in our resource hub.</p></div>
+  <div class="faq-item"><strong>What’s the best way to store fresh herbs?</strong> <p>Treat them like flowers: trim stems, place in water, cover loosely with a bag, and refrigerate. For hardy herbs, wrap in damp paper.</p></div>
+  <div class="faq-item"><strong>Why did my sourdough not rise?</strong> <p>Usually due to weak starter or under-proofing. Check your starter activity and ambient temperature.</p></div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2 style="border: none; margin-top: 0;">Join the hearth</h2>
+    <p style="max-width: 500px; margin: 0 auto 1.8rem;">Weekly letters with recipes, techniques, and kitchen philosophy. No spam — just fire and flour.</p>
+    <input type="email" placeholder="your email" /> <button>Subscribe</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Hearth & Ember · crafted with intention</div>
+    <div style="display: flex; gap: 1.8rem;">
+      <a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a><a href="#">Cookbook</a>
+    </div>
+  </footer>
+
+</div>
+<!-- end container -->
+</body>
+</html>

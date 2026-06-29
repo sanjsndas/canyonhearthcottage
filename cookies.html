@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookies · Hearth & Ember</title>
+  <!-- Google Fonts: DM Serif Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- UNIQUE DESIGN SYSTEM : Canyon Hearth Cottage (cookies page) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fbf7f0;
+      color: #2d2a24;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      color: #3e3527;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin: 2.2rem 0 1.2rem;
+      border-bottom: 3px double #dac5b0;
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 1.8rem 0 0.8rem;
+      color: #5b4a36;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      color: #3d352b;
+    }
+
+    a {
+      color: #8b6f4c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    a:hover { color: #4d3a26; }
+
+    /* cards & containers */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: #fffcf7;
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 12px 28px -8px rgba(60, 45, 30, 0.08);
+      transition: all 0.2s;
+      border: 1px solid #eee6db;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 40px -12px rgba(60, 45, 30, 0.18);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e6d7c4;
+      color: #3e3224;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    /* header */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 0.8rem;
+      border-bottom: 1px solid #e4d8ca;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      font-weight: 400;
+      color: #2f2a1f;
+      letter-spacing: -0.02em;
+    }
+    .logo i {
+      color: #b38b6b;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .nav-links a { color: #3f372c; }
+    .nav-links a:hover { color: #8b6f4c; }
+
+    /* cookies hero */
+    .cookies-hero {
+      background: #f0e7db;
+      padding: 3rem 2.5rem;
+      border-radius: 48px 48px 24px 24px;
+      margin: 1.5rem 0 3rem;
+      background-image: radial-gradient(circle at 70% 20%, rgba(235, 215, 190, 0.3) 0%, transparent 60%);
+    }
+
+    .cookies-hero h1 {
+      font-size: 3.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .cookies-hero .sub {
+      font-size: 1.2rem;
+      color: #4e402f;
+      max-width: 700px;
+      font-weight: 350;
+    }
+
+    /* privacy content (reused) */
+    .privacy-section {
+      background: #fffcf7;
+      padding: 2.5rem;
+      border-radius: 40px;
+      border: 1px solid #eee6db;
+      box-shadow: 0 8px 24px -8px rgba(60,45,30,0.08);
+      margin: 2rem 0;
+    }
+
+    .privacy-section ul {
+      margin-left: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .privacy-section li {
+      margin-bottom: 0.5rem;
+      color: #3d352b;
+    }
+
+    .highlight-box {
+      background: #f5ede4;
+      padding: 1.5rem 2rem;
+      border-radius: 28px;
+      margin: 2rem 0;
+      border-left: 6px solid #b38b6b;
+    }
+
+    .newsletter {
+      background: #e5d7c6;
+      padding: 2.8rem 2.5rem;
+      border-radius: 48px;
+      text-align: center;
+      margin: 3.5rem 0;
+    }
+    .newsletter input {
+      padding: 0.9rem 1.8rem;
+      border-radius: 60px;
+      border: none;
+      width: 280px;
+      max-width: 100%;
+      font-size: 1rem;
+      background: white;
+      margin-right: 0.5rem;
+    }
+    .newsletter button {
+      background: #2f2a1f;
+      border: none;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .newsletter button:hover { background: #4d3a26; }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 2px solid #e1d2c0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: #4d402f;
+    }
+
+    .tip-block {
+      background: #efe6db;
+      padding: 1.2rem 2rem;
+      border-radius: 40px 12px 40px 12px;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    /* cookie table */
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.8rem 0;
+      font-size: 0.95rem;
+    }
+    .cookie-table th {
+      text-align: left;
+      background: #e6d7c4;
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      color: #2f2a1f;
+    }
+    .cookie-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #e4d8ca;
+    }
+    .cookie-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 800px) {
+      h1 { font-size: 2.8rem; }
+      .cookies-hero { padding: 2rem 1.5rem; }
+      .site-header { flex-direction: column; align-items: start; gap: 0.8rem; }
+      .nav-links { flex-wrap: wrap; gap: 1.2rem; }
+      .cookie-table { font-size: 0.85rem; }
+      .cookie-table th, .cookie-table td { padding: 0.5rem 0.6rem; }
+    }
+    @media (max-width: 550px) {
+      body { padding: 0 0.8rem; }
+      .privacy-section { padding: 1.8rem; }
+      .cookies-hero h1 { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER (identical to privacy page) -->
+  <header class="site-header">
+    <div class="logo"><i class="fas fa-fire"></i> Canyon Hearth Cottager</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html" style="color:#8b6f4c; font-weight:600;">Cookies Policy</a>
+    </div>
+  </header>
+
+  <!-- COOKIES HERO (unique) -->
+  <section class="cookies-hero">
+    <h1>Our cookie philosophy.</h1>
+    <p class="sub">Just like a perfectly baked cookie, we keep it simple, transparent, and satisfying. Here’s how we use cookies to make your experience better.</p>
+    <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 2rem;">
+      <span><i class="fas fa-cookie-bite" style="margin-right: 8px;"></i> Last updated: June 2026</span>
+      <span><i class="fas fa-envelope" style="margin-right: 8px;"></i> privacy@hearthandember.com</span>
+    </div>
+  </section>
+
+  <!-- COOKIES CONTENT -->
+  <div class="privacy-section">
+    <h2 style="border-bottom: none; margin-top: 0;">1. What are cookies?</h2>
+    <p>Cookies are small text files stored on your device when you visit a website. They help us remember your preferences, improve site performance, and understand how you interact with our content. We use them to make your visit feel warm and welcoming — like a good cup of tea.</p>
+
+    <h2>2. How we use cookies</h2>
+    <p>We use cookies for the following purposes:</p>
+    <ul>
+      <li><strong>Essential cookies:</strong> These are necessary for the website to function properly (e.g., navigation, security).</li>
+      <li><strong>Preference cookies:</strong> They remember your settings (like language or region).</li>
+      <li><strong>Analytics cookies:</strong> We use privacy-friendly analytics to count visits and see which pages are most loved. No personal data is shared.</li>
+      <li><strong>Newsletter cookies:</strong> They help us understand if our emails are useful and engaging.</li>
+    </ul>
+
+    <!-- cookie table (detailed) -->
+    <h3>Cookie details</h3>
+    <table class="cookie-table">
+      <thead>
+        <tr><th>Name</th><th>Purpose</th><th>Duration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>hearth_session</td><td>Essential – maintains your session</td><td>session</td></tr>
+        <tr><td>pref_lang</td><td>Remembers your language preference</td><td>1 year</td></tr>
+        <tr><td>_ga (analytics)</td><td>Helps us understand page visits (anonymized)</td><td>2 years</td></tr>
+        <tr><td>newsletter_track</td><td>Newsletter engagement (opens/clicks)</td><td>30 days</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <i class="fas fa-cookie" style="color:#8b6f4c; font-size: 1.6rem; margin-right: 12px;"></i>
+      <strong>Your choice:</strong> You can manage or disable cookies in your browser settings. However, some parts of our site may not work as intended without them.
+    </div>
+
+    <h2>3. Third-party cookies</h2>
+    <p>We use a few trusted third-party services that may place cookies:</p>
+    <ul>
+      <li><strong>Email platform:</strong> Our newsletter service uses cookies to track engagement and improve deliverability.</li>
+      <li><strong>Analytics:</strong> We use a privacy-conscious analytics tool (no personal data collected).</li>
+    </ul>
+    <p>These third parties have their own privacy policies, and we only work with those who respect user privacy.</p>
+
+    <h2>4. Managing cookies</h2>
+    <p>Most browsers allow you to control cookies through settings. You can block all cookies, delete existing ones, or set alerts before they are placed. For detailed instructions, visit your browser’s help section.</p>
+    <p>If you prefer, you can opt out of non-essential cookies by adjusting your preferences. We respect your choice.</p>
+
+    <h2>5. Updates to this policy</h2>
+    <p>We may update this Cookies Policy occasionally to reflect changes in technology or regulations. Any updates will be posted here with a revised date.</p>
+    <p>If you have questions, please reach out at <a href="mailto:privacy@hearthandember.com">privacy@hearthandember.com</a>.</p>
+  </div>
+
+  <!-- TIP BLOCK (extra warmth) -->
+  <div class="tip-block">
+    <i class="fas fa-quote-left" style="color:#8b6f4c; margin-right: 12px;"></i> 
+    “Cookies are best enjoyed with a glass of milk — or a clear privacy policy. We serve both.” — The Hearth & Ember team
+  </div>
+
+  <!-- NEWSLETTER (same as main) -->
+  <div class="newsletter">
+    <h2 style="border: none; margin-top: 0;">Join the hearth</h2>
+    <p style="max-width: 500px; margin: 0 auto 1.8rem;">Weekly letters with recipes, techniques, and kitchen philosophy. No spam — just fire and flour.</p>
+    <input type="email" placeholder="your email" /> <button>Subscribe</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Hearth & Ember · crafted with intention</div>
+    <div style="display: flex; gap: 1.8rem;">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="#">Cookbook</a>
+    </div>
+  </footer>
+
+</div>
+<!-- end container -->
+</body>
+</html>
